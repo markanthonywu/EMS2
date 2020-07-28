@@ -1,0 +1,171 @@
+@model IEnumerable<EMS.Models.m_employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name_kn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name_kn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender_cd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birth_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emp_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zip_code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address_city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address_block)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address_building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nearest_station)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.final_education)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.m_section.section_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.m_railway_route.railway_route_nm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.m_skillsheet_comment.skillsheet_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_name_kn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.first_name_kn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender_cd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birth_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.zip_code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address_city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address_block)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address_building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nearest_station)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.final_education)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.updated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.m_section.section_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.m_railway_route.railway_route_nm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.m_skillsheet_comment.skillsheet_id)
+        </td>
+        <td>
+            @Html.ActionLink("削除", "Edit", new { id=item.emp_cd }) |
+            @Html.ActionLink("Details", "Details", new { id=item.emp_cd }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.emp_cd })
+        </td>
+    </tr>
+}
+
+</table>

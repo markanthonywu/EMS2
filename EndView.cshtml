@@ -1,0 +1,23 @@
+@model IEnumerable<EMS.Models.m_employee>
+
+@{
+    ViewBag.Title = "End";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <br />
+    <h1 style="text-align:center">処理が完了しました。</h1>
+    <div class="text-right">
+        <button type="button" class="btn btn-outline-success">@Html.ActionLink("戻る(経歴)", "Index")</button>
+        <button type="button" class="btn btn-outline-success">@Html.ActionLink("戻る(従業員)", "Index")</button>
+        <br />
+    </div>
+</body>
+
