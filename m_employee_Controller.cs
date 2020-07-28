@@ -18,13 +18,27 @@ namespace EMS.Controllers
         // GET: m_employee
         public ActionResult Index()
         {
-            var m_employee = db.m_employee.Include(m => m.m_section).Include(m => m.m_railway_route).Include(m => m.m_skillsheet_comment);
-            return View(m_employee.ToList());
+            // if DeleteDate is null, employee is not deleted
+            var m_employee = db.m_employee
+                .Include(m => m.m_section)
+                .Include(m => m.m_railway_route)
+                .Include(m => m.m_skillsheet_comment)
+                .Where(m => m.DeleteDate == null)
+                .ToList();
+
+            return View(m_employee);
         }
         public ActionResult End()
         {
-            var m_employee = db.m_employee.Include(m => m.m_section).Include(m => m.m_railway_route).Include(m => m.m_skillsheet_comment);
-            return View(m_employee.ToList());
+            // if DeleteDate is null, employee is not deleted
+            var m_employee = db.m_employee
+                .Include(m => m.m_section)
+                .Include(m => m.m_railway_route)
+                .Include(m => m.m_skillsheet_comment)
+                .Where(m => m.DeleteDate == null)
+                .ToList();
+
+            return View(m_employee);
         }
 
         // GET: m_employee/Details/5
@@ -34,8 +48,11 @@ namespace EMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            m_employee m_employee = db.m_employee.Find(id);
-            if (m_employee == null)
+
+            var m_employee = db.m_employee.Find(id);
+
+            // check if employee is logically deleted
+            if (m_employee == null || m_employee.DeleteDate != null)
             {
                 return HttpNotFound();
             }
@@ -78,8 +95,11 @@ namespace EMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            m_employee m_employee = db.m_employee.Find(id);
-            if (m_employee == null)
+
+            var m_employee = db.m_employee.Find(id);
+
+            // check if employee is logically deleted
+            if (m_employee == null || m_employee.DeleteDate != null)
             {
                 return HttpNotFound();
             }
@@ -125,11 +145,15 @@ namespace EMS.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            m_employee m_employee = db.m_employee.Find(id);
-            if (m_employee == null)
+
+            var m_employee = db.m_employee.Find(id);
+
+            // check if employee is logically deleted
+            if (m_employee == null || m_employee.DeleteDate != null)
             {
                 return HttpNotFound();
             }
+
             return View(m_employee);
         }
 
@@ -138,9 +162,16 @@ namespace EMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            m_employee m_employee = db.m_employee.Find(id);
-            db.m_employee.Remove(m_employee);
+            // m_employee m_employee = db.m_employee.Find(id);
+            // db.m_employee.Remove(m_employee);
+
+            var employee = db.m_employee.Find(id);
+            if (employee == null || employee.DeleteDate != null) return HttpNotFound();
+
+            employee.DeleteDate = DateTime.Now();
+
             db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 

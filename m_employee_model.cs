@@ -53,5 +53,8 @@ namespace EMS.Models
         public virtual ICollection<t_career> t_career { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_license> t_license { get; set; }
+
+        // When deleting records, just set DeleteDate to DateTime.Now()
+        public DateTime DeleteDate { get; set; }
     }
 }
